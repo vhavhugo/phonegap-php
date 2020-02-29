@@ -6,6 +6,40 @@
         <title>Meu App v .0.0</title>
         
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <style>
+            #rodape{
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+            }
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div data-role="page" id="principal">
+            <div data-role="header">
+                <h1>Meu App v. 1.0.0</h1>
+            </div>
+            <div data-role="main" id="conteudo" class="ui-content">
+                <div id="latitude"></div>
+                <div id="longitude"></div>
+                <div id="local"></div>
+                <div id="mensagem"></div>
+                
+                <button id="btn1" onclick="exibeGeo()">Exibir Geolocalização</button>
+                <button id="btn2" onclick="location.href='mapa.html'">Exibir Mapa</button>                
+            </div>
+            <div data-role="footer" id="rodape">
+                <h1>Todos os direitos reservados</h1>
+            </div>
+        </div>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>        
         <script>
             window.onload=function(){
                 $("#longitude").hide();
@@ -25,6 +59,11 @@
             function geoSucesso(dados){
                 var lat=dados.coords.latitude;
                 var lon=dados.coords.longitude;
+            
+                //enviando lat e lon para mapa.html
+                localStorage.setItem('lat', lat);
+                localStorage.setItem('lon', lon);
+                
                 
                 $("#mensagem").html("Sua posição foi definida");
                 
@@ -61,39 +100,5 @@
                 $("#btn1").attr('disabled','disabled');
             }
         </script>
-        <style>
-            #rodape{
-                position: absolute;
-                width: 100%;
-                bottom: 0;
-            }
-            html, body {
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <div data-role="page" id="principal">
-            <div data-role="header">
-                <h1>Meu App v. 1.0.0</h1>
-            </div>
-            <div data-role="main" id="conteudo" class="ui-content">
-                <div id="latitude"></div>
-                <div id="longitude"></div>
-                <div id="local"></div>
-                <div id="mensagem"></div>
-                
-                <button id="btn1" onclick="exibeGeo()">Exibir Geolocalização</button>
-                <button id="btn2" onclick="location.href='mapa.html'">Exibir Mapa</button>                
-            </div>
-            <div data-role="footer" id="rodape">
-                <h1>Todos os direitos reservados</h1>
-            </div>
-        </div>
-        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>        
     </body>
 </html>

@@ -11,12 +11,11 @@
                 width: 100%;
                 bottom: 0;
             }
-            /* Always set the map height explicitly to define the size of the div
-            * element that contains the map. */
             #map {
+                width: 100%;
                 height: 100%;
+                background-color: grey;
             }
-            /* Optional: Makes the sample page fill the window. */
             html, body {
                 height: 100%;
                 margin: 0;
@@ -46,13 +45,17 @@
         <script>    
             var map;
             function initMap() {
-                var uluru = {lat: -34.397, lng: 150.644}; 
+                
+                var lat = parseFloat(localStorage.getItem('lat'));
+                var lon = parseFloat(localStorage.getItem('lon'));
+                
+                var meuLocal = {lat: lat, lng: lon}; 
                 map = new google.maps.Map(document.getElementById('map'), {
-                    center: uluru,
-                    zoom: 8
+                    center: meuLocal,
+                    zoom: 7
                 });
                 var marker = new google.maps.Marker({
-                    position:uluru,
+                    position:meuLocal,
                     map: map
                 });
             }
