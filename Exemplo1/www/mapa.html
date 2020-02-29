@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Meu App v .0.0</title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <style>
+            #rodape{
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+            }
+            /* Always set the map height explicitly to define the size of the div
+            * element that contains the map. */
+            #map {
+                height: 100%;
+            }
+            /* Optional: Makes the sample page fill the window. */
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div data-role="page" id="mapa">
+            <div data-role="header">
+                <h1>Minha Localização</h1>
+            </div>
+            <div data-role="main" id="conteudo" class="ui-content">
+                <div id="map"></div>
+                <button id="voltar" onclick="location.href='index.html'">Voltar</button>
+            </div>
+                        
+            <div data-role="footer" id="rodape">
+                <h1>Todos os direitos reservados</h1>
+            </div>
+        </div>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=BdENOeoVGp_XC7V8_-PPrbGcDcF6Yzp7AwHnvBHrgWP5AtoomFP8BvplMsCggqTGfM2SWFd87Ee3HalP9FpiSA&callback=initMap">
+</script>
+        <script>    
+            var map;
+            function initMap() {
+                var uluru = {lat: -34.397, lng: 150.644}; 
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: uluru,
+                    zoom: 8
+                });
+                var marker = new google.maps.Marker({
+                    position:uluru,
+                    map: map
+                });
+            }
+        </script>
+    </body>
+</html>

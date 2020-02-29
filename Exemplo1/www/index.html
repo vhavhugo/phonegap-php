@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
         <script>
             window.onload=function(){
-                $("#logitude").hide();
+                $("#longitude").hide();
                 $("#latitude").hide();
                 $("#local").hide();
                 $("#btn1").attr('disabled', 'disabled');
@@ -20,19 +20,45 @@
             
             function iniciar(){
                 navigator.geolocation.getCurrentPosition(geoSucesso, geoErro);
-//                alert("Dispositivo pronto");
             }
             
             function geoSucesso(dados){
                 var lat=dados.coords.latitude;
                 var lon=dados.coords.longitude;
                 
-                console.log("Latitude:" + lat);
-                console.log("Longitude:" + lon);
+                $("#mensagem").html("Sua posição foi definida");
+                
+                $("#latitude").html("Latitude:" + lat);
+                $("#longitude").html("Longitude:" + lon);
+                $("#btn1").removeAttr('disabled');
+                
+                var url = "https://nominatim.openstreetmap.org/reverse?format=json&lat=";
+                url += lat + "&lon=";
+                url += lon; 
+                $.ajax({
+                    dataType: "json",
+                    url: url,
+                    error: function(e){
+                        $("#local").html("Não foi possível definir a sua localização");
+                    },
+                    success: function(r){
+                        //console.log(r);
+                        $("#local").html("Sua localização:" + r.display_name);
+                    }
+                });
             }
             
             function geoErro(e){
                 alert("Houve um erro:" + e.message);
+            }
+            
+            function exibeGeo(){
+                $("#latitude").show()
+                $("#longitude").show();
+                $("#local").show();
+                $("#mensagem").hide();
+                $("#btn2").removeAttr('disabled');
+                $("#btn1").attr('disabled','disabled');
             }
         </script>
         <style>
@@ -40,6 +66,11 @@
                 position: absolute;
                 width: 100%;
                 bottom: 0;
+            }
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
             }
         </style>
     </head>
@@ -54,16 +85,15 @@
                 <div id="local"></div>
                 <div id="mensagem"></div>
                 
-                <button id="btn1">Exibir Geolocalização</button>
-                <button id="btn2">Exibir Mapa</button>
+                <button id="btn1" onclick="exibeGeo()">Exibir Geolocalização</button>
+                <button id="btn2" onclick="location.href='mapa.html'">Exibir Mapa</button>                
             </div>
             <div data-role="footer" id="rodape">
                 <h1>Todos os direitos reservados</h1>
             </div>
         </div>
-        
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>        
     </body>
 </html>
