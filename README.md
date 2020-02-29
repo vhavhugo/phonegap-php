@@ -31,3 +31,5 @@ var map;
             position: urulu,
             map: map
         });
+        
+# Instalar pluguim da camera do cordova

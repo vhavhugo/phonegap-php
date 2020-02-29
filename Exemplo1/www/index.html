@@ -31,11 +31,22 @@
                 <div id="mensagem"></div>
                 
                 <button id="btn1" onclick="exibeGeo()">Exibir Geolocalização</button>
-                <button id="btn2" onclick="location.href='mapaBing.html'">Exibir Mapa</button>                
+                <button id="btn2" onclick="location.href='mapaBing.html'">Exibir Mapa</button>   <button id="btn3" onclick="location.href='index.html#camera'">Câmera</button>           
             </div>
-            <div data-role="footer" id="rodape">
-                <h1>Todos os direitos reservados</h1>
+        </div>
+        <div data-role="page" id="camera">
+                <div data-role="header">
+                    <h1>Meu App v. 1.0.0</h1>
+                </div>
+                <div data-role="main" id="conteudo" class="ui-content">
+                    <img id="exibeFoto">
+                    <button id="btn4">Fazer Foto</button>
+                    <button id="btn5">Abrir Galeria</button>
+                    <button id="btn6" onclick="location.href='index.html#principal'">Voltar</button>           
             </div>
+        </div>
+        <div data-role="footer" id="rodape">
+            <h1>Todos os direitos reservados</h1>
         </div>
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
