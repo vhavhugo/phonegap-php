@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <style>
+        #rodape{
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+            background-color: grey;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #voltar{
+            width: 100%;
+        }
+    </style>
+    <!-- Reference to the Bing Maps SDK -->
+    <script type='text/javascript'
+            src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AqjRKus-UpehmbmsqkAJmSTFombZqvd1tFtPj88HvQ__IhjroeqIeT5q3kvxrcPn' 
+            async defer></script>
+    
+    <script type='text/javascript'>
+    function GetMap()
+    {
+        var lat = parseFloat(localStorage.getItem('lat'));
+        var lon = parseFloat(localStorage.getItem('lon'));
+        
+        var map = new Microsoft.Maps.Map('#myMap', {
+//            credentials: 'Your Bing Maps Key',
+            center: new Microsoft.Maps.Location(lat, lon),
+            mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+            zoom: 15
+        });
+    }
+    
+    </script>
+</head>
+<body>
+    <div id="myMap" style="position:relative;width:100%;height:80%;"></div>
+    <button id="voltar" onclick="location.href='index.html'">Voltar</button>
+        
+</body>
+</html>
