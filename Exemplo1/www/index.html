@@ -48,7 +48,7 @@
             <div data-role="main" id="conteudo" class="ui-content">
                 <img id="exibeFoto">
                 <button id="btn4" onclick="fazerFoto()">Fazer Foto</button>
-                <button id="btn5">Abrir Galeria</button>
+                <button id="btn5" onclick="abrirGaleria()">Abrir Galeria</button>
                 <button id="btn6" onclick="location.href='index.html#principal'">Voltar</button>           
             </div>
         
@@ -136,12 +136,37 @@
             }
             
             function fotoSucesso(foto){
+                //caminho
                 //alert(foto);
-                $("#exibeFoto").attr('src', foto);
+                
+                //mobile
+                //$("#exibeFoto").attr('src', foto);
+                
+                //web
+                $("#exibeFoto").attr('src','data:image/JPEG;base64,' + foto);
             }
             
             function fotoErro(e){
                 alert("Houve um erro: " + e.message);
+            }
+            
+            function abrirGaleria(){
+                var opFoto = {
+                    quality:50,
+                    sourceType:Camera.PictureSourceType.PHOTOLIBRARY,
+                    destinationType:Camera.DestinationType.FILE_URI,
+                    mediaType:Camera.MediaType.PICTURE
+                }
+                navigator.camera.getPicture(galeriaSucesso,galeriaErro, opFoto);    
+            }
+            
+            function galeriaSucesso(foto){
+                //$("#exibeFoto").attr('src', foto);
+                $("#exibeFoto").attr('src','data:image/JPEG;base64,' + foto);
+            }
+            
+            function galeriaErro(e){
+                alert("Houve u erro: " + e.message);
             }
             
         </script>
