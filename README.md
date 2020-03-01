@@ -33,3 +33,25 @@ var map;
         });
         
 # Instalar pluguim da camera do cordova
+# utilizar camera
+phonegap plugin add cordova-plugin-camera
+
+# obter informações do dispositivo
+phonegap plugin add cordova-plugin-device
+# informações da rede
+phonegap plugin add cordova-plugin-network-information
+# informações da bateria
+phonegap plugin add cordova-plugin-batery-status
+
+# não precisa mais instalar é para o acelerometro
+phonegap plugin add cordova-plugin-device-motion
+
+phonegap plugin add cordova-plugin-vibration
+phonegap plugin add cordova-plugin-dialogs
+
+phonegap plugin add cordova-plugin-media-capture
+phonegap plugin add cordova-plugin-file
+phonegap plugin add cordova-plugin-geolocation
+phonegap plugin add cordova-plugin-globalization
+
+phonegap plugin add cordova-plugin-whitelist

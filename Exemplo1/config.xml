@@ -10,4 +10,7 @@
     <content src="index.html" />
     <access origin="*" />
     <plugin name="cordova-plugin-camera" spec="-4.0.3"/>
+    <plugin name="cordova-plugin-device" spec="-2.0.2"/>
+    <plugin name="cordova-plugin-network-information" spec="-2.0.1"/>
+    <plugin name="cordova-plugin-battery-status" spec="-2.0.2"/>
 </widget>

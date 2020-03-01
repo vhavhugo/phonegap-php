@@ -1,1 +1,15 @@
-{"devDependencies":{"cordova-plugin-camera":"-4.0.3"},"cordova":{"plugins":{"cordova-plugin-camera":{}}}}
+{
+  "devDependencies": {
+    "cordova-plugin-camera": "-4.0.3"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-camera": {}
+    }
+  },
+  "dependencies": {
+    "cordova-plugin-battery-status": "2.0.3",
+    "cordova-plugin-device": "2.0.3",
+    "cordova-plugin-network-information": "2.0.2"
+  }
+}
