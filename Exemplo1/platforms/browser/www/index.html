@@ -35,7 +35,7 @@
                 <div id="mensagem"></div>
                 
                 <button id="btn1" onclick="exibeGeo()">Exibir Geolocalização</button>
-                <button id="btn2" onclick="location.href='mapaBing.html'">Exibir Mapa</button>   <button id="btn3" onclick="location.href='index.html#camera'">Câmera</button>           
+                <button id="btn2" onclick="location.href='mapaBing.html'">Exibir Mapa</button>   <button id="btn3" onclick="location.href='index.html#camera'">Câmera</button>   <button id="btn7" onclick="location.href='index.html#hardware'">Hardware / Rede</button>       
             </div>
             <div data-role="footer" id="rodape">
                 <h1>Todos os direitos reservados</h1>
@@ -56,6 +56,27 @@
                 <h1>Todos os direitos reservados</h1>
             </div>
         </div>
+        <div data-role="page" id="hardware">
+            <div data-role="header">
+                <h1>Meu App v. 1.0.0</h1>
+            </div>
+            <div data-role="main" id="conteudo" class="ui-content">
+                
+                <div id="#exibeHardware"></div>
+                <div id="#exibeRede"></div>
+                <div id="#exibeBateria"></div>
+                <div id="#exibeAcelerometro"></div>
+                
+                <button id="btn8" >Exibir Hardware</button>
+                <button id="btn9">Exibir Rede</button>   
+                <button id="btn10">Exibir Bateria</button>
+                <button id="btn11">Exibir Acelerometro</button>
+                <button id="btn12" onclick="location.href='index#principal'">Voltar</button>       
+            </div>
+            <div data-role="footer" id="rodape">
+                <h1>Todos os direitos reservados</h1>
+            </div>
+        </div>
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>        
@@ -68,6 +89,11 @@
                 $("#btn2").attr('disabled', 'disabled');
                 $("#mensagem").html("Aguarde...");
                 $("#exibeFoto").attr('src',"");
+                $("#exibeHardware").hide();
+                $("#exibeRede").hide();
+                $("#exibeBateria").hide();
+                $("#exibeAcelerometro").hide();
+                
                 
                 document.addEventListener('deviceready', iniciar);
             }
