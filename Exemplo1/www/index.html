@@ -114,7 +114,11 @@
         }
 
         function iniciar() {
+            // navigator.vibrate([100]);
+            
             navigator.geolocation.getCurrentPosition(geoSucesso, geoErro);
+
+            
         }
 
         function geoSucesso(dados) {
@@ -159,6 +163,7 @@
             $("#mensagem").hide();
             $("#btn2").removeAttr('disabled');
             $("#btn1").attr('disabled', 'disabled');
+            navigator.vibrate([300, 100, 500]);
         }
 
         function fazerFoto() {
@@ -295,6 +300,14 @@
 
                     $("#exibeAcelerometro").html(saida);
                     $("#circulo").show();
+
+                    atualX = $("#circulo").offset().left;
+                    atualX = $("#circulo").offset().top;
+
+                    novaX = atualX + x;
+                    novaX = atualY + y;
+
+                    $("#circulo").offset({left:novaX, top:novaY});
                 }, true)
             }else{
                 alert("Recurso não disponivel no seu dispositivo!!");
