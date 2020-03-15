@@ -1,200 +1,249 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-        <title>Meu App v .0.0</title>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Meu App v .0.0</title>
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <style>
+        #rodape {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .exibeFoto {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div data-role="page" id="principal">
+        <div data-role="header">
+            <h1>Meu App v. 1.0.0</h1>
+        </div>
+        <div data-role="main" id="conteudo" class="ui-content">
+            <div id="latitude"></div>
+            <div id="longitude"></div>
+            <div id="local"></div>
+            <div id="mensagem"></div>
+
+            <button id="btn1" onclick="exibeGeo()">Exibir Geolocalização</button>
+            <button id="btn2" onclick="location.href='mapaBing.html'">Exibir Mapa</button> 
+            <button id="btn3" onclick="location.href='index.html#camera'">Câmera</button> 
+            <button id="btn7" onclick="location.href='index.html#hardware'">Hardware / Rede</button>
+        </div>
+        <div data-role="footer" id="rodape">
+            <h1>Todos os direitos reservados</h1>
+        </div>
+    </div>
+    <div data-role="page" id="camera">
+        <div data-role="header">
+            <h1>Meu App v. 1.0.0</h1>
+        </div>
+        <div data-role="main" id="conteudo" class="ui-content">
+            <img id="exibeFoto">
+            <button id="btn4" onclick="fazerFoto()">Fazer Foto</button>
+            <button id="btn5" onclick="abrirGaleria()">Abrir Galeria</button>
+            <button id="btn6" onclick="location.href='index.html#principal'">Voltar</button>
+        </div>
         
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-        <style>
-            #rodape{
-                position: absolute;
-                width: 100%;
-                bottom: 0;
-            }
-            html, body {
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-            
-            exibeFoto{
-                width: 100%;
-            }
-        </style>
-    </head>
-    <body>
-        <div data-role="page" id="principal">
-            <div data-role="header">
-                <h1>Meu App v. 1.0.0</h1>
-            </div>
-            <div data-role="main" id="conteudo" class="ui-content">
-                <div id="latitude"></div>
-                <div id="longitude"></div>
-                <div id="local"></div>
-                <div id="mensagem"></div>
-                
-                <button id="btn1" onclick="exibeGeo()">Exibir Geolocalização</button>
-                <button id="btn2" onclick="location.href='mapaBing.html'">Exibir Mapa</button>   <button id="btn3" onclick="location.href='index.html#camera'">Câmera</button>   <button id="btn7" onclick="location.href='index.html#hardware'">Hardware / Rede</button>       
-            </div>
-            <div data-role="footer" id="rodape">
-                <h1>Todos os direitos reservados</h1>
-            </div>
+        <div data-role="footer" id="rodape">
+            <h1>Todos os direitos reservados</h1>
         </div>
-        <div data-role="page" id="camera">
-            <div data-role="header">
-                <h1>Meu App v. 1.0.0</h1>
-            </div>
-            <div data-role="main" id="conteudo" class="ui-content">
-                <img id="exibeFoto">
-                <button id="btn4" onclick="fazerFoto()">Fazer Foto</button>
-                <button id="btn5" onclick="abrirGaleria()">Abrir Galeria</button>
-                <button id="btn6" onclick="location.href='index.html#principal'">Voltar</button>           
-            </div>
-        
-            <div data-role="footer" id="rodape">
-                <h1>Todos os direitos reservados</h1>
-            </div>
+    </div>
+    <div data-role="page" id="hardware">
+        <div data-role="header">
+            <h1>Meu App v. 1.0.0</h1>
         </div>
-        <div data-role="page" id="hardware">
-            <div data-role="header">
-                <h1>Meu App v. 1.0.0</h1>
-            </div>
-            <div data-role="main" id="conteudo" class="ui-content">
-                
-                <div id="#exibeHardware"></div>
-                <div id="#exibeRede"></div>
-                <div id="#exibeBateria"></div>
-                <div id="#exibeAcelerometro"></div>
-                
-                <button id="btn8" >Exibir Hardware</button>
-                <button id="btn9">Exibir Rede</button>   
-                <button id="btn10">Exibir Bateria</button>
-                <button id="btn11">Exibir Acelerometro</button>
-                <button id="btn12" onclick="location.href='index#principal'">Voltar</button>       
-            </div>
-            <div data-role="footer" id="rodape">
-                <h1>Todos os direitos reservados</h1>
-            </div>
+        <div data-role="main" id="conteudo" class="ui-content">
+            
+            <div id="#exibeHardware"></div>
+            <div id="#exibeRede"></div>
+            <div id="#exibeBateria"></div>
+            <div id="#exibeAcelerometro"></div>
+            
+            <button id="btn8" onclick="hardware()">Exibir Hardware</button>
+            <button id="btn9" onclick="rede()">Exibir Rede</button>
+            <button id="btn10">Exibir Bateria</button>
+            <button id="btn11">Exibir Acelerometro</button>
+            <button id="btn12" onclick="location.href='index.html#principal'">Voltar</button>
         </div>
-        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>        
-        <script>
-            window.onload=function(){
-                $("#longitude").hide();
-                $("#latitude").hide();
-                $("#local").hide();
-                $("#btn1").attr('disabled', 'disabled');
-                $("#btn2").attr('disabled', 'disabled');
-                $("#mensagem").html("Aguarde...");
-                $("#exibeFoto").attr('src',"");
-                $("#exibeHardware").hide();
-                $("#exibeRede").hide();
-                $("#exibeBateria").hide();
-                $("#exibeAcelerometro").hide();
-                
-                
-                document.addEventListener('deviceready', iniciar);
-            }
-            
-            function iniciar(){
-                navigator.geolocation.getCurrentPosition(geoSucesso, geoErro);
-            }
-            
-            function geoSucesso(dados){
-                var lat=dados.coords.latitude;
-                var lon=dados.coords.longitude;
-            
-                //enviando lat e lon para mapa.html
-                localStorage.setItem('lat', lat);
-                localStorage.setItem('lon', lon);
-                
-                
-                $("#mensagem").html("Sua posição foi definida");
-                
-                $("#latitude").html("Latitude:" + lat);
-                $("#longitude").html("Longitude:" + lon);
-                $("#btn1").removeAttr('disabled');
-                
-                var url = "https://nominatim.openstreetmap.org/reverse?format=json&lat=";
-                url += lat + "&lon=";
-                url += lon; 
-                $.ajax({
-                    dataType: "json",
-                    url: url,
-                    error: function(e){
-                        $("#local").html("Não foi possível definir a sua localização");
-                    },
-                    success: function(r){
-                        //console.log(r);
-                        $("#local").html("Sua localização:" + r.display_name);
-                    }
-                });
-            }
-            
-            function geoErro(e){
-                alert("Houve um erro:" + e.message);
-            }
-            
-            function exibeGeo(){
-                $("#latitude").show()
-                $("#longitude").show();
-                $("#local").show();
-                $("#mensagem").hide();
-                $("#btn2").removeAttr('disabled');
-                $("#btn1").attr('disabled','disabled');
-            }
-            
-            function fazerFoto(){
-                var opFoto = {
-                    quality:50,
-                    sourceType:Camera.PictureSourceType.CAMERA,
-                    destinationType:Camera.DestinationType.FILE_URI,
-                    saveToPhotoAlbum:true,
-                    encodingType:Camera.EncodingType.JPEG,
-                    mediaType:Camera.MediaType.PICTURE,
-                    targetWidht:1200,
-                    targetHeight:800
+        <div data-role="footer" id="rodape">
+            <h1>Todos os direitos reservados</h1>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script>
+        function teste(){
+            alert("edlçedlçedl");
+        }
+        window.onload = function () {
+            $("#longitude").hide();
+            $("#latitude").hide();
+            $("#local").hide();
+            $("#btn1").attr('disabled', 'disabled');
+            $("#btn2").attr('disabled', 'disabled');
+            $("#mensagem").html("Aguarde...");
+            $("#exibeFoto").attr('src', "");
+            $("#exibeHardware").hide();
+            $("#exibeRede").hide();
+            $("#exibeBateria").hide();
+            $("#exibeAcelerometro").hide();
+
+            document.addEventListener('deviceready', iniciar);
+        }
+
+        function iniciar() {
+            navigator.geolocation.getCurrentPosition(geoSucesso, geoErro);
+        }
+
+        function geoSucesso(dados) {
+            var lat = dados.coords.latitude;
+            var lon = dados.coords.longitude;
+
+            //enviando lat e lon para mapa.html
+            localStorage.setItem('lat', lat);
+            localStorage.setItem('lon', lon);
+
+
+            $("#mensagem").html("Sua posição foi definida");
+
+            $("#latitude").html("Latitude:" + lat);
+            $("#longitude").html("Longitude:" + lon);
+            $("#btn1").removeAttr('disabled');
+
+            var url = "https://nominatim.openstreetmap.org/reverse?format=json&lat=";
+            url += lat + "&lon=";
+            url += lon;
+            $.ajax({
+                dataType: "json",
+                url: url,
+                error: function (e) {
+                    $("#local").html("Não foi possível definir a sua localização");
+                },
+                success: function (r) {
+                    //console.log(r);
+                    $("#local").html("Sua localização:" + r.display_name);
                 }
-                
-                navigator.camera.getPicture(fotoSucesso, fotoErro, opFoto)
+            });
+        }
+
+        function geoErro(e) {
+            alert("Houve um erro:" + e.message);
+        }
+
+        function exibeGeo() {
+            $("#latitude").show()
+            $("#longitude").show();
+            $("#local").show();
+            $("#mensagem").hide();
+            $("#btn2").removeAttr('disabled');
+            $("#btn1").attr('disabled', 'disabled');
+        }
+
+        function fazerFoto() {
+            var opFoto = {
+                quality: 50,
+                sourceType: Camera.PictureSourceType.CAMERA,
+                destinationType: Camera.DestinationType.FILE_URI,
+                saveToPhotoAlbum: true,
+                encodingType: Camera.EncodingType.JPEG,
+                mediaType: Camera.MediaType.PICTURE,
+                targetWidht: 1200,
+                targetHeight: 800
             }
-            
-            function fotoSucesso(foto){
-                //caminho
-                //alert(foto);
-                
-                //mobile
-                //$("#exibeFoto").attr('src', foto);
-                
-                //web
-                $("#exibeFoto").attr('src','data:image/JPEG;base64,' + foto);
+
+            navigator.camera.getPicture(fotoSucesso, fotoErro, opFoto);
+        }
+
+        function fotoSucesso(foto) {
+            //caminho
+            //alert(foto);
+
+            //mobile
+            //$("#exibeFoto").attr('src', foto);
+
+            //web
+            $("#exibeFoto").attr('src', 'data:image/JPEG;base64,' + foto);
+        }
+
+        function fotoErro(e) {
+            alert("Houve um erro: " + e.message);
+        }
+
+        function abrirGaleria() {
+
+            var opFoto = {
+                quality: 50,
+                sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                destinationType: Camera.DestinationType.FILE_URI,
+                mediaType: Camera.MediaType.PICTURE
             }
-            
-            function fotoErro(e){
-                alert("Houve um erro: " + e.message);
-            }
-            
-            function abrirGaleria(){
-                var opFoto = {
-                    quality:50,
-                    sourceType:Camera.PictureSourceType.PHOTOLIBRARY,
-                    destinationType:Camera.DestinationType.FILE_URI,
-                    mediaType:Camera.MediaType.PICTURE
-                }
-                navigator.camera.getPicture(galeriaSucesso,galeriaErro, opFoto);    
-            }
-            
-            function galeriaSucesso(foto){
-                //$("#exibeFoto").attr('src', foto);
-                $("#exibeFoto").attr('src','data:image/JPEG;base64,' + foto);
-            }
-            
-            function galeriaErro(e){
-                alert("Houve u erro: " + e.message);
-            }
-            
-        </script>
-    </body>
+            navigator.camera.getPicture(galeriaSucesso, galeriaErro, opFoto);
+        }
+
+        function galeriaSucesso(foto) {
+            //$("#exibeFoto").attr('src', foto);
+            $("#exibeFoto").attr('src', 'data:image/JPEG;base64,' + foto);
+        }
+
+        function galeriaErro(e) {
+            alert("Houve um erro: " + e.message);
+        }
+
+        function hardware(){
+            $("#exibeHardware").show();
+            $("#exibeRede").hide();
+            $("#exibeBateria").hide();
+            $("#exibeAcelerometro").hide();
+
+            var saida="";
+            saida += "Modelo do dispositivo: " + device.model;
+            saida += "<br>Sistema Operacional:" + device.platform;
+            saida += "<br>Versão do SO: " + device.version;
+            saida += "<br>fabricante: " + device.manufacturer;
+            saida += "<br>Serial: " + device.serial;
+
+            $("#exibeHardware").html(saida);
+            $("#exibeHardware").show();
+        }
+
+        function rede(){
+            $("#exibeHardware").hide();
+            $("#exibeRede").show();
+            $("#exibeBateria").hide();
+            $("#exibeAcelerometro").hide();
+
+            var rede = navigator.connection.type;
+
+            var tipo={};
+
+            tipo[Connection.UNKOWN] = "Conexão Desconhecida :(";
+            tipo[Connection.ETHERNET] = "Conexão Cabeada";
+            tipo[Connection.CELL_2G] = "Conexão 2G";
+            tipo[Connection.CELL_3G] = "Conexão 3G";
+            tipo[Connection.CELL_4G] = "Conexão 4G";
+            tipo[Connection.CELL] = "Rede Celular";
+            tipo[Connection.NONE] = "Nenhuma Conexão :(";
+
+            $("#exibeRede").html(tipo[rede]);
+
+        }
+
+    </script>
+</body>
+
 </html>
