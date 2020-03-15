@@ -75,7 +75,7 @@
             
             <button id="btn8" onclick="hardware()">Exibir Hardware</button>
             <button id="btn9" onclick="rede()">Exibir Rede</button>
-            <button id="btn10">Exibir Bateria</button>
+            <button id="btn10" onclick="bateria()">Exibir Bateria</button>
             <button id="btn11">Exibir Acelerometro</button>
             <button id="btn12" onclick="location.href='index.html#principal'">Voltar</button>
         </div>
@@ -87,9 +87,7 @@
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script>
-        function teste(){
-            alert("edlçedlçedl");
-        }
+       
         window.onload = function () {
             $("#longitude").hide();
             $("#latitude").hide();
@@ -240,6 +238,23 @@
             tipo[Connection.NONE] = "Nenhuma Conexão :(";
 
             $("#exibeRede").html(tipo[rede]);
+
+        }
+
+        function bateria(){
+            $("#exibeHardware").hide();
+            $("#exibeRede").hide();
+            $("#exibeBateria").show();
+            $("#exibeAcelerometro").hide();
+
+            window.addEventListener('batterystatus',status);
+
+            function status(info){
+                var saida = "Nível da bateria: " + info.level + "%";
+                saida += "<br>Está carregando?: " + info.isPlugged;
+
+                $("#exibeBateria").html(saida);
+            }
 
         }
 
