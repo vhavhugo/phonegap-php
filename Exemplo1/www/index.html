@@ -247,14 +247,21 @@
             $("#exibeBateria").show();
             $("#exibeAcelerometro").hide();
 
-            window.addEventListener('batterystatus',status);
+            //window.addEventListener('batterystatus',status);
 
-            function status(info){
-                var saida = "Nível da bateria: " + info.level + "%";
-                saida += "<br>Está carregando?: " + info.isPlugged;
+            //function status(info){
+                // var saida = "Nível da bateria: " + info.level + "%";
+                // saida += "<br>Está carregando?: " + info.isPlugged;
 
-                $("#exibeBateria").html(saida);
-            }
+                // $("#exibeBateria").html(saida);
+            // }
+            
+            navigator.getBattery().then(function(battery){
+                $('#exibeBateria').html("O nível da bateria:" + battery.level * 100 + "%");
+                battery.onlevelchange = function(){
+                    $("#exibeBateria").html("O nível da bateria:" + battery.level * 100 + "%");
+                }
+            });
 
         }
 
