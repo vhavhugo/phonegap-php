@@ -10,6 +10,7 @@
   "dependencies": {
     "cordova-plugin-battery-status": "2.0.3",
     "cordova-plugin-device": "2.0.3",
+    "cordova-plugin-dialogs": "2.0.2",
     "cordova-plugin-network-information": "2.0.2"
   }
 }
