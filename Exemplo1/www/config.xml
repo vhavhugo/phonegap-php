@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.helloworld" version="1.0.0" 
-xmlns="http://www.w3.org/ns/widgets" 
-xmlns="http://schemas.android.com/apk/res/android" 
-xmlns="http://cordova.apache.org/ns/1.0" 
-xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Meu app</name>
+<widget id="com.denilson.meuapp" version="1.0.0" 
+    xmlns="http://www.w3.org/ns/widgets" 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:cdv="http://cordova.apache.org/ns/1.0" 
+    xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Meu App</name>
     <description>
-        Curso de phonegap
+        Aplicativo desenvolvido no curso "Desenvolvimento de aplicativos com PHONEGAP e PHP"
     </description>
-    <author email="hugo@tiic.com.br" href="www.tiic.com.br">
-        Hugo do Valle
+    <author email="hugo@tiic.com.br" href="http://www.tiic.com.br">
+        Denilson Bonatti
     </author>
     <content src="index.html" />
     <allow-intent href="http://*/*" />
@@ -17,33 +17,37 @@ xmlns:gap="http://phonegap.com/ns/1.0">
     <allow-intent href="tel:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <allow-intent href="*" />
+    <allow-navigation href="*" />
     <access origin="*" />
 
-    <preference name="orientation" value="default" 
-    />
+    <preference name="orientation" value="default" />
+    
+    <!-- <preference name="phonegap-version" value="cli-7.1.6" /> -->
+
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
-    
-    <plugin name="cordova-plugin-camera" spec="-4.0.3"/>
-    <plugin name="cordova-plugin-device" spec="-2.0.2"/>
-    <plugin name="cordova-plugin-network-information" spec="-2.0.1"/>
-    <plugin name="cordova-plugin-battery-status" spec="-2.0.2"/>
-    <plugin name="cordova-plugin-dialogs" spec="-2.0.1"/>
-    <plugin name="cordova-plugin-media-capture" spec="-3.0.2"/>
-    <plugin name="cordova-plugin-file" spec="-6.0.1"/>
-    <plugin name="cordova-plugin-geolocation" spec="-4.0.1"/>
-    <plugin name="cordova-plugin-globalization" spec="-1.11.0"/>
-    <plugin name="cordova-plugin-whitelist" spec="-1.3.3"/>
-    <plugin name="cordova-plugin-device-motion" spec="-2.0.2"/>
 
+    <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.2.4" />
+    <plugin name="cordova-plugin-camera" source="npm" spec="~2.4.1" />
+    <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.4.3" />
+    <plugin name="cordova-plugin-device" source="npm" spec="~1.1.6" />
+    <plugin name="cordova-plugin-dialogs" source="npm" spec="~1.3.3" />
+    <plugin name="cordova-plugin-file" source="npm" spec="~4.3.3" />
+    <plugin name="cordova-plugin-geolocation" source="npm" spec="~2.4.3" />
+    <plugin name="cordova-plugin-globalization" source="npm" spec="~1.0.7" />
+    <plugin name="cordova-plugin-inappbrowser" source="npm" spec="~1.7.1" />
+    <plugin name="cordova-plugin-network-information" source="npm" spec="~1.3.3" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.3.3" />
+    <plugin name="cordova-plugin-device-motion" spec="~2.0.1" />
+    <plugin name="cordova-plugin-vibration" spec="~3.1.0" />
     <platform name="android">
-        <icon density="ldpi" src="res/icon/android/drawable-ldpi-icon.png"/>
-        <icon density="mdpi" src="res/icon/android/drawable-mdpi-icon.png"/>
-        <icon density="hdpi" src="res/icon/android/drawable-hdpi-icon.png"/>
-        <icon density="xhdpi" src="res/icon/android/drawable-xhdpi-icon.png"/>
-        <icon density="xxhdpi" src="res/icon/android/drawable-xxhdpi-icon.png"/>
-        <icon density="xxxhdpi" src="res/icon/android/drawable-xxxhdpi-icon.png"/>
+        <icon density="ldpi" src="res/icon/android/drawable-ldpi-icon.png" />
+        <icon density="mdpi" src="res/icon/android/drawable-mdpi-icon.png" />
+        <icon density="hdpi" src="res/icon/android/drawable-hdpi-icon.png" />
+        <icon density="xhdpi" src="res/icon/android/drawable-xhdpi-icon.png" />
+        <icon density="xxhdpi" src="res/icon/android/drawable-xxhdpi-icon.png" />
+        <icon density="xxxhdpi" src="res/icon/android/drawable-xxxhdpi-icon.png" />
     </platform>
+
 </widget>

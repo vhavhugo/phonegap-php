@@ -55,3 +55,11 @@ phonegap plugin add cordova-plugin-geolocation
 phonegap plugin add cordova-plugin-globalization
 
 phonegap plugin add cordova-plugin-whitelist
+
+# https://build.phonegap.com/
+
+
+# -----Trabalhando com banco de dados PHP
+
+# iniciar novo projeto
+phonegap create InstaFoto --template blanck
