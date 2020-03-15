@@ -1,11 +1,12 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "helloworld",
-  "short_name": "helloworld",
+  "name": "Meu app",
+  "short_name": "Meu app",
   "version": "com.phonegap.helloworld",
-  "description": "A blank PhoneGap app.",
-  "author": "PhoneGap Team",
+  "description": "Curso de phonegap",
+  "author": "Hugo do Valle",
   "icons": [],
+  "orientation": "any",
   "start_url": "index.html"
 }
