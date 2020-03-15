@@ -21,8 +21,15 @@
             padding: 0;
         }
 
-        .exibeFoto {
+        #exibeFoto {
             width: 100%;
+        }
+        #circulo{
+            border-radius: 100%;
+            border: 5px solid red;
+            width: 100px;
+            width: 100px;
+            background-color: azure;
         }
     </style>
 </head>
@@ -39,8 +46,8 @@
             <div id="mensagem"></div>
 
             <button id="btn1" onclick="exibeGeo()">Exibir Geolocalização</button>
-            <button id="btn2" onclick="location.href='mapaBing.html'">Exibir Mapa</button> 
-            <button id="btn3" onclick="location.href='index.html#camera'">Câmera</button> 
+            <button id="btn2" onclick="location.href='mapaBing.html'">Exibir Mapa</button>
+            <button id="btn3" onclick="location.href='index.html#camera'">Câmera</button>
             <button id="btn7" onclick="location.href='index.html#hardware'">Hardware / Rede</button>
         </div>
         <div data-role="footer" id="rodape">
@@ -57,7 +64,7 @@
             <button id="btn5" onclick="abrirGaleria()">Abrir Galeria</button>
             <button id="btn6" onclick="location.href='index.html#principal'">Voltar</button>
         </div>
-        
+
         <div data-role="footer" id="rodape">
             <h1>Todos os direitos reservados</h1>
         </div>
@@ -67,16 +74,17 @@
             <h1>Meu App v. 1.0.0</h1>
         </div>
         <div data-role="main" id="conteudo" class="ui-content">
-            
+
             <div id="#exibeHardware"></div>
             <div id="#exibeRede"></div>
             <div id="#exibeBateria"></div>
             <div id="#exibeAcelerometro"></div>
-            
+            <div id="#circulo"></div>
+
             <button id="btn8" onclick="hardware()">Exibir Hardware</button>
             <button id="btn9" onclick="rede()">Exibir Rede</button>
             <button id="btn10" onclick="bateria()">Exibir Bateria</button>
-            <button id="btn11">Exibir Acelerometro</button>
+            <button id="btn11" onclick="acel()">Exibir Acelerometro</button>
             <button id="btn12" onclick="location.href='index.html#principal'">Voltar</button>
         </div>
         <div data-role="footer" id="rodape">
@@ -87,7 +95,7 @@
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script>
-       
+
         window.onload = function () {
             $("#longitude").hide();
             $("#latitude").hide();
@@ -100,6 +108,7 @@
             $("#exibeRede").hide();
             $("#exibeBateria").hide();
             $("#exibeAcelerometro").hide();
+            $("#circulo").hide();
 
             document.addEventListener('deviceready', iniciar);
         }
@@ -202,13 +211,14 @@
             alert("Houve um erro: " + e.message);
         }
 
-        function hardware(){
+        function hardware() {
             $("#exibeHardware").show();
             $("#exibeRede").hide();
             $("#exibeBateria").hide();
             $("#exibeAcelerometro").hide();
+            $("#circulo").hide();
 
-            var saida="";
+            var saida = "";
             saida += "Modelo do dispositivo: " + device.model;
             saida += "<br>Sistema Operacional:" + device.platform;
             saida += "<br>Versão do SO: " + device.version;
@@ -219,15 +229,16 @@
             $("#exibeHardware").show();
         }
 
-        function rede(){
+        function rede() {
             $("#exibeHardware").hide();
             $("#exibeRede").show();
             $("#exibeBateria").hide();
             $("#exibeAcelerometro").hide();
+            $("#circulo").hide();
 
             var rede = navigator.connection.type;
 
-            var tipo={};
+            var tipo = {};
 
             tipo[Connection.UNKOWN] = "Conexão Desconhecida :(";
             tipo[Connection.ETHERNET] = "Conexão Cabeada";
@@ -241,28 +252,53 @@
 
         }
 
-        function bateria(){
+        function bateria() {
             $("#exibeHardware").hide();
             $("#exibeRede").hide();
             $("#exibeBateria").show();
             $("#exibeAcelerometro").hide();
+            $("#circulo").hide();
 
             //window.addEventListener('batterystatus',status);
 
             //function status(info){
-                // var saida = "Nível da bateria: " + info.level + "%";
-                // saida += "<br>Está carregando?: " + info.isPlugged;
+            // var saida = "Nível da bateria: " + info.level + "%";
+            // saida += "<br>Está carregando?: " + info.isPlugged;
 
-                // $("#exibeBateria").html(saida);
+            // $("#exibeBateria").html(saida);
             // }
-            
-            navigator.getBattery().then(function(battery){
+
+            navigator.getBattery().then(function (battery) {
                 $('#exibeBateria').html("O nível da bateria:" + battery.level * 100 + "%");
-                battery.onlevelchange = function(){
+                battery.onlevelchange = function () {
                     $("#exibeBateria").html("O nível da bateria:" + battery.level * 100 + "%");
                 }
             });
 
+        }
+
+        function acel() {
+            $("#exibeHardware").hide();
+            $("#exibeRede").hide();
+            $("#exibeBateria").hide();
+            $("#exibeAcelerometro").show();
+
+            if (window.DeviceOrientationEvent) {
+                window.addEventListener("deviceorientation", function(event){
+                    var x = Math.round(event.gama);
+                    var y = Math.round(event.beta);
+                    var r = Math.round(event.alpha);
+
+                    var saida = "Eixo: "+ x;
+                    saida += "<br> Eixo Y: " + y;
+                    saida += "<br> Rotação: " + r;
+
+                    $("#exibeAcelerometro").html(saida);
+                    $("#circulo").show();
+                }, true)
+            }else{
+                alert("Recurso não disponivel no seu dispositivo!!");
+            }
         }
 
     </script>
