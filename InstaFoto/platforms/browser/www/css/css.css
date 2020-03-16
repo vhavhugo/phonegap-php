@@ -1,0 +1,58 @@
+@font-face {
+    font-family: InstaFonte;
+    src: url(../fontes/Angelface.otf);
+}
+
+.titulo{
+
+  font-family: InstaFonte;
+  font-size: 60px;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+
+}
+
+
+#rodape{
+
+  position:absolute;
+  bottom:0;
+  width:100%;
+  position: fixed;
+  height: 50px;
+
+}
+
+.margem-topo{
+
+  margin-top: 30px;
+}
+
+.foto{
+    border-radius: 50%;
+    border-style: solid;
+    border-color: darkgray;
+}
+
+.perfil{
+    width:50px;
+    height: 50px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: darkgray;
+}
+
+#exibeFoto{
+    width: 100%;
+}
+
+#fotoPerfil{
+    width:150px;
+    height:150px;
+    margin-left:auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: medium;
+    border-color: darkcyan;
+}
